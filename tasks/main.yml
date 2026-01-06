@@ -1,0 +1,20 @@
+---
+# tasks file for myrole
+
+- name: Install httpd
+  yum:
+    name: httpd
+    state: present
+
+- name: Copy static website
+  copy:
+    src: index.html
+    dest: /var/www/html/index.html
+    mode: '0644'
+
+- name: Start and enable httpd
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+
